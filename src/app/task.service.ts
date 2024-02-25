@@ -16,4 +16,13 @@ export class TaskService {
     return this.tasks; 
   }
 
+  addTask() {
+    let newTask:Task = {
+      id: this.tasks.length + 1,
+      title: `Task ${this.tasks.length + 1}`,
+      completed: false
+    }
+    this.tasks.push(newTask);
+  }
+
 }

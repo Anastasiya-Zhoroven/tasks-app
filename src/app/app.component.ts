@@ -15,4 +15,9 @@ export class AppComponent implements OnInit{
   ngOnInit(): void {
     this.tasks = this.taskService.getTasks();
   }
+
+  addTask() {
+    this.taskService.addTask();
+    this.tasks = this.taskService.getTasks();
+  }
 }
