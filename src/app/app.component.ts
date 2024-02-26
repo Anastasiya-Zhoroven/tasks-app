@@ -20,4 +20,9 @@ export class AppComponent implements OnInit{
     this.taskService.addTask();
     this.tasks = this.taskService.getTasks();
   }
+
+  deleteTask(id: number): void {
+    this.taskService.deleteTask(id);
+    this.tasks = this.taskService.getTasks();
+  }
 }

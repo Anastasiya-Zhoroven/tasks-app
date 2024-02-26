@@ -17,12 +17,18 @@ export class TaskService {
   }
 
   addTask() {
+    let idGenerated = this.tasks.length ? this.tasks[this.tasks.length - 1].id + 1 : 1;
+
     let newTask:Task = {
-      id: this.tasks.length + 1,
-      title: `Task ${this.tasks.length + 1}`,
+      id: idGenerated,
+      title: `Task ${idGenerated}`,
       completed: false
     }
     this.tasks.push(newTask);
+  }
+
+  deleteTask(id: number) {
+    this.tasks = this.tasks.filter(task => task.id !== id);
   }
 
 }
