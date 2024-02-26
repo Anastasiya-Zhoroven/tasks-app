@@ -1,0 +1,38 @@
+.tasks-container {
+  display: flex;
+  flex-direction: column;
+  background-color: var(--tertiary-color);
+  border-radius: .5rem;
+  padding: .5rem;
+  color: var(--accent-color);
+  width: 18rem;
+}
+
+.title-container {
+  position: relative;
+}
+
+.task-title {
+  width: 100%;
+  text-align: center;
+}
+
+.delete-button {
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+
+.status-container {
+  display: flex;
+  flex-direction: row;
+  gap: .9rem;
+  align-items: center;
+}
+
+.button {
+  background-color: var(--accent-color);
+  color: var(--text-color);
+  border-radius: 4px;
+  font-size: 1rem;
+}
