@@ -1,4 +1,4 @@
-import { Component, Input, Output, OnInit, EventEmitter } from '@angular/core'
+import { Component, Input, Output, EventEmitter, OnChanges } from '@angular/core'
 import { faCheck, faXmark, IconDefinition, faTrash } from '@fortawesome/free-solid-svg-icons'
 
 import { TaskService } from '../task.service'
@@ -8,10 +8,9 @@ import { Task } from '../task.interface'
   selector: 'app-task',
   templateUrl: './task.component.html',
   styleUrls: ['./task.component.scss'],
-  providers: [TaskService]
 })
-export class TaskComponent implements OnInit {
-  @Input() taskItem!: Task
+export class TaskComponent implements OnChanges {
+  @Input() taskItem!: Task 
   @Output() delete: EventEmitter<number> = new EventEmitter<number>()
   @Output() update = new EventEmitter<{ id: number, completed: boolean }>()
   iconSign: IconDefinition = faCheck
@@ -19,7 +18,7 @@ export class TaskComponent implements OnInit {
 
   constructor (private readonly taskService: TaskService) {}
 
-  ngOnInit (): void {
+  ngOnChanges (): void {
     this.iconSign = this.taskItem.completed ? faCheck : faXmark
   }
 

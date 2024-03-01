@@ -7,7 +7,7 @@
   </div>
   <div class="status-container">
     <p>Complitition status</p>
-    <fa-icon [icon]="iconSign" [ngStyle]="{'color': iconSign.iconName.toString() === 'check' ? 'green' : 'brown'}"></fa-icon>
+    <fa-icon [icon]="iconSign" [ngStyle]="{'color': taskItem.completed ? 'green' : 'brown'}"></fa-icon>
   </div>
   <button class="button update-button" (click)="updateTask()">Change status</button>
 </div>
