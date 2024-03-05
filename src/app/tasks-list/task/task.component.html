@@ -3,11 +3,13 @@
     <div class="task-title">{{ taskItem.title}}</div>
     <button class="button delete-button" (click)="deleteTask()">
       <fa-icon [icon]="deleteSign"></fa-icon>
-    </button>
+      </button>
   </div>
   <div class="status-container">
     <p>Complitition status</p>
     <fa-icon [icon]="iconSign" [ngStyle]="{'color': taskItem.completed ? 'green' : 'brown'}"></fa-icon>
   </div>
-  <button class="button update-button" (click)="updateTask()">Change status</button>
-</div>
+    <button class="button view-more-button" (click)="navigateToTaskCard()">View more...</button>
+    <button class="button update-button" (click)="updateTask()">Change status</button>
+  </div>
+
