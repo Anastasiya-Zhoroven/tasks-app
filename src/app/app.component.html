@@ -1,7 +1,1 @@
-<div class="app-container">
-  <h1>Tasks app</h1>
-  <button class="status-button" (click)="addTask()">+ Add task</button>
-  <div class="tasks-list-container">
-    <app-task *ngFor="let task of tasks" [taskItem]="task" (delete)="deleteTask($event)" (update)="updateTask($event.id, $event.completed)"></app-task>
-  </div>
-</div>
+<router-outlet></router-outlet>

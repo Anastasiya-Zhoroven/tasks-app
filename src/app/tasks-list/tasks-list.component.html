@@ -1,0 +1,13 @@
+<div class="app-container">
+    <h1>Tasks app</h1>
+    <mat-slide-toggle color="primary" [(ngModel)]="toggleValue" (click)="toggleChanged()">Press to authorise</mat-slide-toggle>
+    <button class="add-button" (click)="addTask()">+ Add task</button>
+    <mat-radio-group color="primary" (change)="handleSelection($event)" [(ngModel)]="status">
+        <mat-radio-button value="all">All</mat-radio-button>
+        <mat-radio-button value="completed">Only comleted</mat-radio-button>
+        <mat-radio-button value="uncompleted">Only uncompleted</mat-radio-button>
+      </mat-radio-group>
+    <div class="tasks-list-container">
+      <app-task *ngFor="let task of tasks" [taskItem]="task" (delete)="deleteTask($event)" (update)="updateTask($event.id, $event.completed)"></app-task>
+    </div>
+  </div>

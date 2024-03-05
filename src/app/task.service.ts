@@ -53,4 +53,16 @@ export class TaskService {
     task.completed = completed
     localStorage.setItem('tasks', JSON.stringify(this.tasks))
   }
+
+  filterTasksByStatus (status: string): Task[] {
+    return this.tasks.filter(task => {
+      if (status === 'completed') {
+        return task.completed
+      }
+      if (status === 'uncompleted') {
+        return !task.completed
+      }
+      return true
+    })
+  }
 }

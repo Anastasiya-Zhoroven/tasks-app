@@ -1,0 +1,14 @@
+<div class="main-card-container">
+<div class="card-container">
+    <div>{{ taskItem.title}}</div>
+    <div class="card-description">
+        <div class="icon-container">
+            <fa-icon [icon]="iconSign"></fa-icon>
+            <p>Information</p>
+        </div>
+        <p><b>Task description: </b>This is a very interesting task. Enjoy:)</p>
+        <p><b>Deadline: </b>Yesterday, as always</p>
+    </div>
+</div>
+<button class="back-button" (click)="goBack()">Back to all tasks</button>
+</div>
