@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { User } from '../user.interface'
+import { User } from '../user.interface';
 
 @Component({
   selector: 'app-users-table',
@@ -7,5 +7,5 @@ import { User } from '../user.interface'
   styleUrls: ['./users-table.component.scss']
 })
 export class UsersTableComponent {
-  @Input() users!: User[]
+  @Input() users!: User[];
 }

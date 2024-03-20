@@ -12,7 +12,9 @@
     "rules": {
         "@typescript-eslint/semi": ["error", "always"],
         "import/no-named-as-default": "off",
-        "import/no-named-as-default-member": "off"
+        "import/no-named-as-default-member": "off",
+        "@typescript-eslint/consistent-type-imports": "off",
+        "@typescript-eslint/strict-boolean-expressions": "warn"
       
     }
 }

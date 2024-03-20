@@ -1,24 +1,22 @@
 import { Pipe, PipeTransform } from '@angular/core';
-import { TaskFilterParams } from '../task-filter-params';
 import { Task } from '../task.interface';
 
 @Pipe({
   name: 'taskListPipe'
 })
 export class TaskListPipe implements PipeTransform {
-
-  transform(tasks: Task[] | null, status?: string, userId?: number, sortBy?: '' | 'userId' | 'completed'): Task[] {
+  transform (tasks: Task[] | null, status?: string, userId?: number, sortBy?: '' | 'userId' | 'completed'): Task[] {
     if (!tasks) {
       return [];
     }
 
     if (status && ['completed', 'uncompleted'].includes(status)) {
-      const statusB = status === 'completed'
+      const statusB = status === 'completed';
       tasks = tasks.filter(task => task.completed === statusB);
     }
 
     if (userId) {
-      const userIdChosen: number = userId
+      const userIdChosen: number = userId;
       tasks = tasks.filter(task => task.userId === userIdChosen);
     }
 
@@ -36,5 +34,4 @@ export class TaskListPipe implements PipeTransform {
 
     return tasks;
   }
-
 }

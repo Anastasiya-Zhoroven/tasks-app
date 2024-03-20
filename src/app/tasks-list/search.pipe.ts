@@ -1,18 +1,17 @@
 import { Pipe, PipeTransform } from '@angular/core';
 import { Observable, of } from 'rxjs';
-import { debounceTime, distinctUntilChanged, map, switchMap } from 'rxjs/operators';
+import { debounceTime, distinctUntilChanged, map } from 'rxjs/operators';
 import { Task } from '../task.interface';
 
 @Pipe({
   name: 'search'
 })
 export class SearchPipe implements PipeTransform {
-
-  transform(tasks: Task[] | null, searchText?: string): Observable<Task[]> {
+  transform (tasks: Task[] | null, searchText?: string): Observable<Task[]> {
     if (!tasks) {
-      return of([])
+      return of([]);
     }
-    
+
     if (!searchText || searchText.trim() === '') {
       return of(tasks);
     }
@@ -29,5 +28,4 @@ export class SearchPipe implements PipeTransform {
       })
     );
   }
-
 }
