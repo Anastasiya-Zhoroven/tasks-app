@@ -1,13 +1,42 @@
 <div class="app-container">
-    <h1>Tasks app</h1>
-    <mat-slide-toggle color="primary" [(ngModel)]="toggleValue" (click)="toggleChanged()">Press to authorise</mat-slide-toggle>
-    <button class="add-button" (click)="addTask()">+ Add task</button>
-    <mat-radio-group color="primary" (change)="handleSelection($event)" [(ngModel)]="status">
-        <mat-radio-button value="all">All</mat-radio-button>
-        <mat-radio-button value="completed">Only comleted</mat-radio-button>
-        <mat-radio-button value="uncompleted">Only uncompleted</mat-radio-button>
-      </mat-radio-group>
-    <div class="tasks-list-container">
-      <app-task *ngFor="let task of tasks" [taskItem]="task" (delete)="deleteTask($event)" (update)="updateTask($event.id, $event.completed)"></app-task>
+  <h1>Tasks app</h1>
+  <mat-slide-toggle color="primary" [(ngModel)]="toggleValue" (click)="authChanged()">Press to authorise</mat-slide-toggle>
+  <button class="add-button" (click)="addTask()">+ Add task</button>
+  <ng-container *ngIf="users && users.length > 0">
+    <app-users-table [users]="users"></app-users-table>
+  </ng-container>
+  <div class="content-container">
+    <div class="tasks-container">
+      <div class="filter-container">
+      <mat-form-field>
+        <mat-label>Filter by status</mat-label>
+        <mat-select [(value)]="filterParams.status" (selectionChange)="handleStatusSelection($event)">
+          <mat-option value="all">All</mat-option>
+          <mat-option value="completed">Completed</mat-option>
+          <mat-option value="uncompleted">Uncompleted</mat-option>
+        </mat-select>
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>Filter by user</mat-label>
+        <mat-select [(value)]="filterParams.userId">
+          <mat-option value="">All</mat-option>
+          <mat-option *ngFor="let user of users" [value]="user.id">{{user.name}}</mat-option>
+        </mat-select>
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>Sorting</mat-label>
+        <mat-select [(value)]="filterParams.sortBy">
+          <mat-option value="">Any</mat-option>
+          <mat-option value="userId">User</mat-option>
+          <mat-option value="completed">Status</mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+    <input type="text" [(ngModel)]="filterParams.search" placeholder="search">
+    <br>
+      <div class="tasks-list-container">
+        <app-task *ngFor="let task of (tasksSubject | async | search:filterParams.search) | async | taskListPipe:filterParams.status:filterParams.userId:filterParams.sortBy" [taskItem]="task" (deleteEvent)="deleteTask($event)" (updateEvent)="updateTask($event.id, $event.completed)"></app-task>
+      </div>
     </div>
   </div>
+</div>

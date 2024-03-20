@@ -10,5 +10,9 @@
         "project": "./tsconfig.json"
     },
     "rules": {
+        "@typescript-eslint/semi": ["error", "always"],
+        "import/no-named-as-default": "off",
+        "import/no-named-as-default-member": "off"
+      
     }
 }

@@ -5,6 +5,7 @@
       <fa-icon [icon]="deleteSign"></fa-icon>
       </button>
   </div>
+  <div class="task-title">{{ taskItem.userId}}</div>
   <div class="status-container">
     <p>Complitition status</p>
     <fa-icon [icon]="iconSign" [ngStyle]="{'color': taskItem.completed ? 'green' : 'brown'}"></fa-icon>

@@ -1,8 +1,8 @@
 import { Component, Input, Output, EventEmitter, OnChanges } from '@angular/core'
 import { faCheck, faXmark, IconDefinition, faTrash } from '@fortawesome/free-solid-svg-icons'
 
-import { TaskService } from '../../task.service'
-import { Task } from '../../task.interface'
+import { TaskService } from '../task.service'
+import { Task } from '../task.interface'
 
 import { Router } from '@angular/router'
 
@@ -13,27 +13,27 @@ import { Router } from '@angular/router'
 })
 export class TaskComponent implements OnChanges {
   @Input() taskItem!: Task
-  @Output() delete: EventEmitter<number> = new EventEmitter<number>()
-  @Output() update = new EventEmitter<{ id: number, completed: boolean }>()
+  @Output() deleteEvent: EventEmitter<number> = new EventEmitter<number>()
+  @Output() updateEvent: EventEmitter<{ id: number, completed: boolean }> = new EventEmitter<{ id: number, completed: boolean }>()
   iconSign: IconDefinition = faCheck
   deleteSign: IconDefinition = faTrash
 
-  constructor (private readonly taskService: TaskService, private readonly router: Router) {}
+  constructor(private readonly taskService: TaskService, private readonly router: Router) { }
 
-  ngOnChanges (): void {
+  ngOnChanges(): void {
     this.iconSign = this.taskItem.completed ? faCheck : faXmark
   }
 
-  deleteTask (): void {
-    this.delete.emit(this.taskItem.id)
+  deleteTask(): void {
+    this.deleteEvent.emit(this.taskItem.id)
   }
 
-  updateTask (): void {
+  updateTask(): void {
     this.iconSign = this.taskItem.completed ? faXmark : faCheck
-    this.update.emit({ id: this.taskItem.id, completed: !this.taskItem.completed })
+    this.updateEvent.emit({ id: this.taskItem.id, completed: !this.taskItem.completed })
   }
 
-  navigateToTaskCard (): void {
+  navigateToTaskCard(): void {
     this.router.navigate(['tasks', this.taskItem.id])
   }
 }
