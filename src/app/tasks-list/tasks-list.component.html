@@ -1,5 +1,6 @@
 <div class="app-container">
   <h1>Tasks app</h1>
+  <app-form></app-form>
   <mat-slide-toggle color="primary" [(ngModel)]="toggleValue" (click)="authChanged()">Press to authorise</mat-slide-toggle>
   <button class="add-button" (click)="addTask()">+ Add task</button>
   <ng-container *ngIf="users && users.length > 0">
