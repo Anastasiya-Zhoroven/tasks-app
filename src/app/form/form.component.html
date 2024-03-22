@@ -1,22 +1,15 @@
-<form [formGroup]="emailForm" (ngSubmit)="onSubmit()">
+<form [formGroup]="emailForm" (ngSubmit)="onSubmit()" class="form-container">
   <div>
-    <label for="email">Email:</label>
+    <label for="email">Email: </label>
     <input type="email" id="email" formControlName="email" (focus)="handleEmailControlFocus()" (blur)="handleEmailControlBlur()">
     <p *ngIf="!isEmailControlFocused && email?.touched && email?.errors?.['required']">Email is required</p>
     <p *ngIf="!isEmailControlFocused && email?.touched && email?.errors?.['invalidEmail']">Invalid email format</p>
-    <!-- <span *ngIf="emailForm.invalid && emailForm.touched">Email is required</span>
-    <span *ngIf="emailForm.errors && emailForm.errors['invalidEmail']">Invalid email format</span> -->
   </div>
   <div>
-    <label for="ipv4">IPv4 Address:</label>
+    <label for="ipv4">IPv4 Address: </label>
     <input type="text" id="ipv4" formControlName="ipv4" (focus)="handleIPv4ControlFocus()" (blur)="handleIPv4ControlBlur()">
     <p *ngIf="!isIPv4ControlFocused && ipv4?.touched && ipv4?.errors?.['required']">IPv4 is required</p>
     <p *ngIf="!isIPv4ControlFocused && ipv4?.touched && ipv4?.errors && ipv4?.errors?.['invalidIpv4']">Invalid ipv4 format</p>
-    <!-- <span *ngIf="emailForm.errors && emailForm.errors['invalidIpv4']">Invalid IPv4 addre÷ss</span> -->
   </div>
-  <button type="submit">Submit</button>
+  <button type="submit" class="submit-button">Submit</button>
 </form>
-<!-- <div *ngIf="emailForm.invalid && (emailForm.dirty || emailForm.touched)">/ -->
-<!-- <span *ngIf="emailForm.invalid && emailForm.touched">Email is required</span> -->
-
-<!-- </div> -->
