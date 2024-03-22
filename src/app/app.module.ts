@@ -21,6 +21,7 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { TaskListPipe } from './tasks-list/task-list-pipe.pipe';
 import { SearchPipe } from './tasks-list/search.pipe';
+import { FormComponent } from './form/form.component';
 
 @NgModule({
   declarations: [
@@ -31,7 +32,8 @@ import { SearchPipe } from './tasks-list/search.pipe';
     TaskCardComponent,
     UsersTableComponent,
     TaskListPipe,
-    SearchPipe
+    SearchPipe,
+    FormComponent
   ],
   imports: [
     BrowserModule,
